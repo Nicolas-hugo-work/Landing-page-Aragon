@@ -1,3 +1,12 @@
+# 1 · Build: genera el sitio estático en /app/out
+FROM node:22-alpine AS build
+WORKDIR /app
+COPY package.json package-lock.json ./
+RUN npm ci
+COPY . .
+RUN npm run build
+
+# 2 · Servir con nginx
 FROM nginx:1.27-alpine
-COPY index.html /usr/share/nginx/html/index.html
+COPY --from=build /app/out /usr/share/nginx/html
 EXPOSE 80

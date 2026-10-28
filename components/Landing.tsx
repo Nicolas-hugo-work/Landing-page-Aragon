@@ -3,7 +3,7 @@
 /*
   ARAGON — Landing (Next.js + React + TypeScript)
   Skills: landing (estructura + GSAP), epic-design (capas de profundidad + técnicas), copywriting (textos ES/EN)
-  Inspiración visual: estudio digital con tipografía 3D inflada (fondo blanco, azul eléctrico, cian y aguamarina)
+  Inspiración visual: estudio digital con tipografía 3D inflada (paleta propia: verde esmeralda + lima sobre gris perla)
 
   Técnicas aplicadas (catálogo epic-design):
     - Palabra 3D inflada (SVG + filtro de iluminación) que se deshace en partículas al pasar el cursor
@@ -49,9 +49,9 @@ const PRINCIPLES: [Key, Key][] = [
 ];
 
 const STEPS: { title: Key; desc: Key; tone: string }[] = [
-  { title: "p1.title", desc: "p1.desc", tone: "electric" },
+  { title: "p1.title", desc: "p1.desc", tone: "emerald" },
   { title: "p2.title", desc: "p2.desc", tone: "ink" },
-  { title: "p3.title", desc: "p3.desc", tone: "aqua" },
+  { title: "p3.title", desc: "p3.desc", tone: "lime" },
   { title: "p4.title", desc: "p4.desc", tone: "white" },
 ];
 

@@ -20,9 +20,9 @@ const LETTERS = [
   "M 1208 300 L 1208 168 M 1208 300 L 1208 224 C 1208 178 1242 154 1280 154 C 1322 154 1352 182 1352 226 L 1352 300",
 ];
 
-// Colores de las partículas: de azul eléctrico (arriba) a cian (abajo) + puntos oscuros de la trama
-const PARTICLE_STOPS = ["#1424D6", "#2350FF", "#1FD3F6"];
-const HALFTONE = "#06117A";
+// Colores de las partículas: de esmeralda (arriba) a lima (abajo) + puntos oscuros de la trama
+const PARTICLE_STOPS = ["#065F46", "#10B981", "#A3E635"];
+const HALFTONE = "#022C22";
 
 const SCATTER_MS = 850;
 const RETURN_MS = 950;
@@ -190,14 +190,14 @@ export function PuffyWord({ id, interactive = false, className = "" }: { id: str
       >
         <defs>
           <linearGradient id={ids.grad} gradientUnits="userSpaceOnUse" x1="0" y1="100" x2="0" y2="335">
-            <stop offset="0%" stopColor="#1424D6" />
-            <stop offset="50%" stopColor="#2350FF" />
-            <stop offset="100%" stopColor="#1FD3F6" />
+            <stop offset="0%" stopColor="#065F46" />
+            <stop offset="50%" stopColor="#10B981" />
+            <stop offset="100%" stopColor="#A3E635" />
           </linearGradient>
           <pattern id={ids.dots} width="6" height="6" patternUnits="userSpaceOnUse" patternTransform="rotate(30)">
-            <circle cx="3" cy="3" r="1.25" fill="#06117A" />
+            <circle cx="3" cy="3" r="1.25" fill="#022C22" />
           </pattern>
-          {/* Volumen: relieve a partir del alfa desenfocado + luz difusa + brillo blanco + luz cian desde abajo + sombra */}
+          {/* Volumen: relieve a partir del alfa desenfocado + luz difusa + brillo blanco + luz lima desde abajo + sombra */}
           <filter
             id={ids.puff}
             filterUnits="userSpaceOnUse"
@@ -213,11 +213,11 @@ export function PuffyWord({ id, interactive = false, className = "" }: { id: str
             </feDiffuseLighting>
             <feComposite in="diff" in2="SourceAlpha" operator="in" result="diffIn" />
             <feBlend in="SourceGraphic" in2="diffIn" mode="multiply" result="shaded" />
-            <feSpecularLighting in="blur" surfaceScale="9" specularConstant="0.6" specularExponent="22" lightingColor="#d6f6ff" result="spec">
+            <feSpecularLighting in="blur" surfaceScale="9" specularConstant="0.6" specularExponent="22" lightingColor="#ECFDF5" result="spec">
               <feDistantLight azimuth={240} elevation={55} />
             </feSpecularLighting>
             <feComposite in="spec" in2="SourceAlpha" operator="in" result="specIn" />
-            <feSpecularLighting in="blur" surfaceScale="9" specularConstant="1" specularExponent="8" lightingColor="#1ee8ff" result="rim">
+            <feSpecularLighting in="blur" surfaceScale="9" specularConstant="1" specularExponent="8" lightingColor="#C6F432" result="rim">
               <feDistantLight azimuth={110} elevation={18} />
             </feSpecularLighting>
             <feComposite in="rim" in2="SourceAlpha" operator="in" result="rimIn" />
@@ -225,7 +225,7 @@ export function PuffyWord({ id, interactive = false, className = "" }: { id: str
             <feComposite in="lit" in2="rimIn" operator="arithmetic" k2="1" k3="0.7" result="final" />
             <feGaussianBlur in="SourceAlpha" stdDeviation="14" result="sh" />
             <feOffset in="sh" dy="18" result="shOff" />
-            <feFlood floodColor="#0B1FA8" floodOpacity="0.2" />
+            <feFlood floodColor="#065F46" floodOpacity="0.22" />
             <feComposite in2="shOff" operator="in" result="shadow" />
             <feMerge>
               <feMergeNode in="shadow" />
